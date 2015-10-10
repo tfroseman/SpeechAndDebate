@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\School;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
-class AccountController extends Controller
+
+class AccountSchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +21,7 @@ class AccountController extends Controller
     public function index()
     {
         //
+        return "School Index";
     }
 
     /**
@@ -43,13 +48,19 @@ class AccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $accountID
+     * @param  int  $schoolID
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($accountID, $schoolID)
     {
-        return view('account.index', ['user' => User::findOrFail($id)]);
+        $schoolEmail = DB::table('schools')->select('email')->where('id',$schoolID)->get();
 
+        $data = array(
+            'user' => User::findOrFail($accountID),
+            'emails' => $schoolEmail);
+
+        return view('account.school') -> with($data);
     }
 
     /**

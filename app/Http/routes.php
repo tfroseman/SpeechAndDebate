@@ -15,3 +15,8 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::Resource('account', 'AccountController');
+
+Route::Resource('account.school', 'AccountSchoolController');
+
+Route::Resource('account.students', 'AccountStudentsController');

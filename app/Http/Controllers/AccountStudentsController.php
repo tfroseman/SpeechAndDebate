@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AccountController extends Controller
+class AccountStudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,8 +47,7 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        return view('account.index', ['user' => User::findOrFail($id)]);
-
+        //
     }
 
     /**
