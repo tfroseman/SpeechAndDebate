@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/logout', function () {
+    return view('pages.home');
+});
+
+Route::get('/login', function () {
+    return view('pages.home');
+});
+
 Route::Resource('account', 'AccountController');
 
 Route::Resource('account.school', 'AccountSchoolController');
