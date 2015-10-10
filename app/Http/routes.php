@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('ember');
+    return view('pages.home');
 });
+

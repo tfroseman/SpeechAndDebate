@@ -5991,4 +5991,7 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.navbar-default {
+  background-color: #e74c3c; }
+
 /*# sourceMappingURL=app.css.map */
