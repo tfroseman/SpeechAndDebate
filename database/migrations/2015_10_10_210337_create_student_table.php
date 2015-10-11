@@ -17,6 +17,7 @@ class CreateStudentTable extends Migration
             $table->string('name');
             $table->integer('grade');
             $table->integer('category');
+            $table->integer('accountID');
             $table->timestamps();
         });
     }
