@@ -2,7 +2,7 @@
 
 @section('nav')
     <li><a href="/account/">My Account </a></li>
-    <li><a href="/account//school/">School Account</a></li>
+    <li><a href="/account/school/">School Account</a></li>
     <li class="active"><a href="#">Students <span class="sr-only">(current)</span></a></li>
 @stop
 
@@ -37,7 +37,6 @@
                 </thead>
                 <tbody>
 
-                @
 
                 @foreach($students as $student)
                     <tr>
@@ -47,7 +46,7 @@
                             {!! Form::select('Grade', array(12,11,10,9,8,7), $student->grade, ['class'=>'form-control']) !!}
                         </td>
                         <td style="padding: 8px">
-                            {!! Form::select('Category' , $student->grade, ['class'=>'form-control']) !!}
+                            {!! Form::select('Category', $categories, $student->category, ['class'=>'form-control'])!!}
                         </td>
                         <td>
                             <button type="button" class="btn btn-default"><span

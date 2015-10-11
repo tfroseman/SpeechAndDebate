@@ -18,8 +18,12 @@ class AccountStudentsController extends Controller
     public function index($accountID)
     {
         $students = DB::table('students')->where('accountID',$accountID)->get();
-        $categories = DB::table('categories')->get();
+        $raw_categories = DB::table('categories')->get();
 
+        $categories = array();
+        foreach($raw_categories as $temp){
+           array_push($categories, $temp->category);
+        }
         $data = array(
             'students' => $students,
             'categories' => $categories
