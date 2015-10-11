@@ -18,5 +18,5 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'grade', 'category'];
+    protected $fillable = ['name', 'grade', 'category','accountID'];
 }

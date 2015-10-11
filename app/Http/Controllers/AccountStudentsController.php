@@ -5,17 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AccountStudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @param   $accountID
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($accountID)
     {
-        //
+        $students = DB::table('students')->where('accountID',$accountID)->get();
+        $categories = DB::table('categories')->get();
+
+        $data = array(
+            'students' => $students,
+            'categories' => $categories
+        );
+
+        return view('account.students')->with($data);
     }
 
     /**

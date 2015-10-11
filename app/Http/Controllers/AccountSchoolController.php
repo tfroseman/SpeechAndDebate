@@ -14,14 +14,21 @@ use Illuminate\Support\Facades\View;
 class AccountSchoolController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. - In this event is is pulling with a blank school id
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($accountID)
     {
         //
-        return "School Index";
+        $schoolEmail = DB::table('schools')->select('email')->where('id', $accountID)->get();
+
+        $data = array(
+            'user' => User::findOrFail($accountID),
+            'emails' => $schoolEmail);
+
+        return view('account.school')->with($data);
+
     }
 
     /**
@@ -37,7 +44,7 @@ class AccountSchoolController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,25 +55,25 @@ class AccountSchoolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $accountID
-     * @param  int  $schoolID
+     * @param  int $accountID
+     * @param  int $schoolID
      * @return \Illuminate\Http\Response
      */
     public function show($accountID, $schoolID)
     {
-        $schoolEmail = DB::table('schools')->select('email')->where('id',$schoolID)->get();
+        $schoolEmail = DB::table('schools')->select('email')->where('id', $accountID)->get();
 
         $data = array(
             'user' => User::findOrFail($accountID),
             'emails' => $schoolEmail);
 
-        return view('account.school') -> with($data);
+        return view('account.school')->with($data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +84,8 @@ class AccountSchoolController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,7 +96,7 @@ class AccountSchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
