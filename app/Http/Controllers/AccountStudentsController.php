@@ -42,12 +42,13 @@ class AccountStudentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $accountID
+     * @param  int  $schoolID
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($accountID, $schoolID)
     {
-        //
+        return view('account.students');
     }
 
     /**
