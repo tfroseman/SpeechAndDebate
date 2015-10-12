@@ -3,7 +3,7 @@
 @section('nav')
     <li><a href="/account/{{$user->id}}">My Account </a></li>
     <li class="active"><a href="#">School Account <span class="sr-only">(current)</span></a></li>
-    <li><a href="#">Students</a></li>
+    <li><a href="/account/{{$user->id}}/students">Students</a></li>
 @stop
 
 @section('loginout')
