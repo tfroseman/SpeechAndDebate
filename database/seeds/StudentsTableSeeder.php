@@ -12,17 +12,10 @@ class StudentsTableSeeder extends Seeder
     public function run()
     {
         DB::table('students')->insert([
-            'name' => 'Thomas R',
-            'grade' => '8',
-            'category' => 'Prose',
-            'accountID' => '1',
+            'name' => str_random(7),
+            'grade' => rand(1,6),
+            'category' => rand(1,19),
+            'accountID' => rand(1,2),
         ]);
-
-        DB::table('students')->insert([
-            'name' => 'Andy R',
-            'grade' => '12',
-            'category' => 'Duo Interp',
-            'accountID' => '1',
-        ]);
-    }
+}
 }

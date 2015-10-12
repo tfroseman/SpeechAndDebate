@@ -12,21 +12,9 @@ class SchoolsTableSeeder extends Seeder
     public function run()
     {
         DB::table('schools')->insert([
-            'id' => '1',
-            'name' => 'Mercer Area Jr. Sr.',
-            'email' => 'test@gmail.com',
-        ]);
-
-        DB::table('schools')->insert([
-            'id' => '1',
-            'name' => 'Mercer Area Jr. Sr.',
-            'email' => 'somewhere@gmail.com',
-        ]);
-
-        DB::table('schools')->insert([
-            'id' => '2',
-            'name' => 'Another Place',
-            'email' => 'whowhat@gmail.com',
+            'id' => rand(1,3),
+            'name' => str_random(9),
+            'email' => str_random(10),
         ]);
     }
 }
