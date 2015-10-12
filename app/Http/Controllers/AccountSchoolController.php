@@ -26,7 +26,6 @@ class AccountSchoolController extends Controller
         $data = array(
             'user' => User::findOrFail($accountID),
             'emails' => $schoolEmail);
-
         return view('account.school')->with($data);
 
     }

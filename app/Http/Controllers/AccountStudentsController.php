@@ -17,14 +17,15 @@ class AccountStudentsController extends Controller
      */
     public function index($accountID)
     {
-        $students = DB::table('students')->where('accountID',$accountID)->get();
+        $students = DB::table('students')->where('accountID', $accountID)->get();
         $raw_categories = DB::table('categories')->get();
 
         $categories = array();
-        foreach($raw_categories as $temp){
-           array_push($categories, $temp->category);
+        foreach ($raw_categories as $temp) {
+            array_push($categories, $temp->category);
         }
         $data = array(
+            'accountID' => $accountID,
             'students' => $students,
             'categories' => $categories
         );
@@ -45,7 +46,7 @@ class AccountStudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,8 +57,8 @@ class AccountStudentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $accountID
-     * @param  int  $schoolID
+     * @param  int $accountID
+     * @param  int $schoolID
      * @return \Illuminate\Http\Response
      */
     public function show($accountID, $schoolID)
@@ -68,7 +69,7 @@ class AccountStudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,8 +80,8 @@ class AccountStudentsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,7 +92,7 @@ class AccountStudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
