@@ -2,8 +2,8 @@
 
 @section('nav')
     <li class="active"><a href="#">My Account  <span class="sr-only">(current)</span></a></li>
-    <li><a href="#">School Account</a></li>
-    <li><a href="#">Students</a></li>
+    <li><a href="/account/{{$user->id}}/school">School Account</a></li>
+    <li><a href="/account/{{$user->id}}/students">Students</a></li>
 @stop
 
 @section('loginout')
@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    {{$user}}
+
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <form>
