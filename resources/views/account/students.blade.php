@@ -1,3 +1,4 @@
+@inject('grades','App\Http\Utilities\Grade')
 @extends('layout')
 
 @section('nav')
@@ -69,17 +70,31 @@
                                 aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Add Student</h4>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        {!! Form::text('Name','Name',['class'=>'form-control']) !!}
-                        {!! Form::select('Grade', array(12,11,10,9,8,7), 0,['class'=>'form-control']) !!}
-                        {!! Form::select('Category', $categories, 0, ['class'=>'form-control'])!!}
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
-                </div>
+                <form method="POST" action="/account/{{$accountID}}/students">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="grade">Grade:
+                                <select name="grade" class="form-control">
+                                    @foreach(grade::all() as $grade)
+                                        <option value="{{ $grade }}">{{ $grade }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::select('Category', $categories, "0", ['class'=>'form-control'])!!}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
+                    </div>
+                </form>
             </div>
         </div>
     </div>
