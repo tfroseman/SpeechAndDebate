@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Student;
 
 class AccountStudentsController extends Controller
 {
@@ -46,12 +47,16 @@ class AccountStudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param Requests\StudentRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StudentRequest $request)
     {
-        //
+        //Create a new student
+        Student::create($request->all());
+
+        return redirect()->back();
     }
 
     /**

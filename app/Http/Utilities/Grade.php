@@ -1,7 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thomasroseman
- * Date: 10/25/15
- * Time: 4:24 PM
- */
+
+namespace App\Http\Utilities;
+
+class Grade
+{
+    protected static $grades = [7,8,9,10,11,12];
+
+    public static function all()
+    {
+        return static::$grades;
+    }
+}
