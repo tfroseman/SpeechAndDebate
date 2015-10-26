@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class School
+ * @package App
+ */
 class School extends Model
 {
     /**
@@ -19,5 +23,21 @@ class School extends Model
      * @var array
      */
     protected $fillable = ['name', 'email'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function students()
+    {
+        return $this->hasMany('App\Student');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 
 }
