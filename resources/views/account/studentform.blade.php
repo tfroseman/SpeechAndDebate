@@ -9,7 +9,7 @@
             <form method="POST" action="/account/{{$accountID}}/students">
                 {{ csrf_field() }}
                 <div class="modal-body">
-
+                    <input type="hidden" name="school_id" value="{{ $accountID }}">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">

@@ -44,6 +44,7 @@
                         <th scope="row">{{$i}}</th>
                         <td>{{$student->name}}</td>
                         <td>
+                            <input type="hidden" name="school_id" value="{{ $accountID }}">
                             <div class="form-group">
                                 <select name="grade" class="form-control">
                                     @foreach(\App\Http\Utilities\Grade::all() as $grade)
