@@ -16,8 +16,9 @@ class CreateStudentTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('grade');
-            $table->integer('category');
-            $table->integer('accountID');
+            $table->string('category');
+            $table->integer('school_id')->unsigned();
+            $table->foreign('school_id')->references('id')->on('schools');
             $table->timestamps();
         });
     }
