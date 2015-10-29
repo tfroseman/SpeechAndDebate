@@ -18,19 +18,12 @@ class AccountStudentsController extends Controller
      */
     public function index($accountID)
     {
-        $students = DB::table('students')->where('accountID', $accountID)->get();
-        $raw_categories = DB::table('categories')->get();
+        $students =Student::where('school_id',$accountID)->get();
 
-        $categories = array();
-        foreach ($raw_categories as $temp) {
-            array_push($categories, $temp->category);
-        }
         $data = array(
             'accountID' => $accountID,
             'students' => $students,
-            'categories' => $categories
         );
-
         return view('account.students')->with($data);
     }
 
@@ -55,7 +48,7 @@ class AccountStudentsController extends Controller
     {
         //Create a new student
         Student::create($request->all());
-
+        //return $request;
         return redirect()->back();
     }
 
