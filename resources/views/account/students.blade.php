@@ -38,16 +38,34 @@
                 </thead>
                 <tbody>
 
-                <?php $i=1; ?>
+                <?php $i = 1; ?>
                 @foreach($students as $student)
                     <tr>
                         <th scope="row">{{$i}}</th>
                         <td>{{$student->name}}</td>
                         <td>
-                            {!! Form::select('Grade', array(12,11,10,9,8,7), $student->grade, ['class'=>'form-control']) !!}
+                            <div class="form-group">
+                                <select name="grade" class="form-control">
+                                    @foreach(\App\Http\Utilities\Grade::all() as $grade)
+                                        @if($grade == $student->grade)
+                                            <option value="{{ $grade }}" selected>{{ $grade }}</option>
+                                        @endif
+                                        <option value="{{ $grade }}">{{ $grade }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </td>
                         <td style="padding: 8px">
-                            {!! Form::select('Category', $categories, $student->category, ['class'=>'form-control'])!!}
+                            <div class="form-group">
+                                <select name="grade" class="form-control">
+                                    @foreach(\App\Http\Utilities\Categories::all() as $name => $code)
+                                        @if($code == $student->category)
+                                            <option value="{{ $code }}" selected>{{ $name }}</option>
+                                        @endif
+                                        <option value="{{ $code }}">{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </td>
                         <td>
                             <button type="button" class="btn btn-default"><span
@@ -62,40 +80,15 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Student</h4>
-                </div>
-                <form method="POST" action="/account/{{$accountID}}/students">
-                    <div class="modal-body">
+    @include('account.studentform')
 
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="grade">Grade:
-                                <select name="grade" class="form-control">
-                                    @foreach(grade::all() as $grade)
-                                        <option value="{{ $grade }}">{{ $grade }}</option>
-                                    @endforeach
-                                </select>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::select('Category', $categories, "0", ['class'=>'form-control'])!!}
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
-                    </div>
-                </form>
-            </div>
+    @if (count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-    </div>
+    @endif
 @stop
