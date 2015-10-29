@@ -31,10 +31,12 @@ $factory->define(App\School::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Student::class, function (Faker\Generator $faker) {
+    $categ = \App\Http\Utilities\Categories::all();
+    $keys = array_keys($categ);
     return [
         'name' => $faker->name,
-        'grade' => $faker->numberBetween(7,12),
-        'category' => $faker->word,
-        'school_id' => $faker->numberBetween(1,3),
+        'grade' => \App\Http\Utilities\Grade::all()[rand(0,5)],
+        'category' => array_get($categ,$keys[rand(0,17)],"oo"),
+        'school_id' => 1,
     ];
 });

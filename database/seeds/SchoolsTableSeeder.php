@@ -12,7 +12,7 @@ class SchoolsTableSeeder extends Seeder
     public function run()
     {
         DB::table('schools')->insert([
-            'id' => rand(1,3),
+            'id' => 1,
             'name' => str_random(9),
             'email' => str_random(10),
         ]);

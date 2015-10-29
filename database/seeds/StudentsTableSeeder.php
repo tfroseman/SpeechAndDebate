@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Http\Utilities;
 
 class StudentsTableSeeder extends Seeder
 {
@@ -13,9 +14,9 @@ class StudentsTableSeeder extends Seeder
     {
         DB::table('students')->insert([
             'name' => str_random(7),
-            'grade' => rand(1,6),
-            'category' => rand(1,19),
-            'accountID' => rand(1,2),
+            'grade' => Utilities\Grade::all()[rand(0,6)],
+            'category' => Utilities\Categories::all()[rand(0,18)],
+            'accountID' => 1,
         ]);
 }
 }
