@@ -11,6 +11,20 @@ var elixir = require('laravel-elixir');
  |
  */
 
+var handsontable = './resources/assets/bower/handsontable/dist/';
+
 elixir(function(mix) {
     mix.sass('app.scss');
+
+    mix.styles([
+        handsontable + 'handsontable.full.css'
+    ]);
+
+    mix.scripts([
+        handsontable + 'handsontable.full.js',
+        handsontable + 'zeroclipboard/ZeroClipboard.js',
+        handsontable + 'pikaday/pikaday.js',
+        handsontable + 'moment/moment.js'
+    ]);
+
 });
