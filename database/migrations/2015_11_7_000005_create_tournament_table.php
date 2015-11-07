@@ -14,13 +14,13 @@ class CreateTournamentTable extends Migration
     {
         Schema::create('tournaments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('round_count');
+            $table->timestamps();
+        });
 
+        Schema::table('tournaments', function($table){
             $table->integer('host_id')->unsigned();
             $table->foreign('host_id')->references('id')->on('schools');
-
-            $table->integer('round_count');
-
-            $table->timestamps();
         });
     }
 
