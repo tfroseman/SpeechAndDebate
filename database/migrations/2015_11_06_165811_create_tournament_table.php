@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateTournamentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('tournaments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('short_code');
-            $table->string('long_code');
+
+            $table->integer('host_id')->unsigned();
+            $table->foreign('host_id')->references('id')->on('schools');
+
+            $table->integer('round_count');
+
+            $table->timestamps();
         });
     }
 
@@ -26,6 +31,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('tournaments');
     }
 }
