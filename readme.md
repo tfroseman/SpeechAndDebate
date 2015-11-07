@@ -1,5 +1,29 @@
-##Speech and Debate Webapp
+###Speech and Debate Webapp
 
-After watching countless tournamnets use Excel or another form of spreadsheet program to host, manage, and score tornaments I realized that there was a better way.
+After watching countless tournaments use Excel or another form of spreadsheet program to host, manage, and score tournaments I realized that there had to be a better way.
 
-So I made this. A (webapp) that would allow head coaches and judges to mangage all aspects of a speech and debate competition. One can manage students to a school account, Create a competition with ( in theory) any number of rounds as you wished. And have multiple people all work together to tally scores and all be working at the same time. Then afte the competiton is done your results are ready to be emailed and printed for display and awards.
+So I made this. A  meant to be a end all solution for schools to run a speech and debate competition. It is a work in progress so changes will be abundant.
+
+##Built On
+
+The site is built on [Laravel](http://laravel.com/) , [Bootstrap](http://getbootstrap.com/), [MySQL](https://www.mysql.com/), [Handsontable](http://handsontable.com/), and because Laravel ships with elixir which uses [Gulp](http://gulpjs.com/) I also use a bit of [SASS](http://sass-lang.com/)
+
+##Completed
+* View/Update Account
+* View/Update Students
+* Most layouts
+
+
+
+##TODO
+
+* Tournament(All parts) - this is will be a long parts
+  * Create, Update
+  * Manage Rounds
+  * Generate Tournament Codes
+  * Print scores to PDF
+* Login
+* Register
+* Delete Account
+* Mass upload via csv
+* More to be added
