@@ -31,4 +31,4 @@ Route::Resource('account.students', 'AccountStudentsController');
 
 Route::Resource('student', 'AccountStudentsController');
 
-Route::Resource('account.tournament', 'AccountTournamentController');
+Route::Resource('tournament', 'AccountTournamentController');

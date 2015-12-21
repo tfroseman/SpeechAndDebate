@@ -13,13 +13,9 @@ class AccountTournamentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($value)
+    public function index()
     {
-        $data = array(
-            'school_id' => $value,
-        );
-
-        return view('tournament.manage',$data);
+        return '<p>Empty Index Return user to login</p>';
     }
 
     /**
@@ -29,7 +25,10 @@ class AccountTournamentController extends Controller
      */
     public function create()
     {
-        //
+        $data = array(
+            'school_id' => 1,
+        );
+        return view('tournament.new', $data);
     }
 
     /**
@@ -51,7 +50,11 @@ class AccountTournamentController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = array(
+            'school_id' => $id,
+        );
+
+        return view('tournament.manage',$data);
     }
 
     /**
