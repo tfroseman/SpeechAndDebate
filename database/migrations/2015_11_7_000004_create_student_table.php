@@ -22,7 +22,7 @@ class CreateStudentTable extends Migration
 
         Schema::table('students', function($table){
             $table->integer('school_id')->unsigned();
-            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

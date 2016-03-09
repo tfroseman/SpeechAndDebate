@@ -19,10 +19,10 @@ class CreateTournamentSchoolsTable extends Migration
 
         Schema::table('tournament_schools',function($table){
             $table->integer('school_id')->unsigned();
-            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
 
             $table->integer('tournament_id')->unsigned();
-            $table->foreign('tournament_id')->references('id')->on('tournaments');
+            $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
         });
     }
 

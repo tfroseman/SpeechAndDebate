@@ -20,7 +20,7 @@ class CreateTournamentTable extends Migration
 
         Schema::table('tournaments', function($table){
             $table->integer('host_id')->unsigned();
-            $table->foreign('host_id')->references('id')->on('schools');
+            $table->foreign('host_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 
