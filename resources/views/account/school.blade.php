@@ -21,8 +21,32 @@
                     <label for="schoolName">Name</label>
                     <input type="text" class="form-control" id="schoolName" placeholder="Mercer Area Jr Sr High School"
                            value="Mercer Area Jr Sr High School">
+                </div>
 
+                <div class="">
+                    <h3>Affiliated Accounts</h3>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h5>Coaches</h5>
+                            <ul>
+                                {{--@foreach($coaches as $coach)--}}
+                                    <li class="non_style_list">$coach</li>
+                                {{--@endforeach--}}
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>Judges</h5>
+                            <ul>
+                                {{--@foreach($judges as $judge)--}}
+                                    <li class="non_style_list">$judge</li>
+                                {{--@endforeach--}}
+                            </ul>
+                        </div>
+                    </div>
 
+                </div>
+
+                <div class="form-group">
                     @foreach($emails as $email)
 
                         <label for="schoolName">Emails</label>
