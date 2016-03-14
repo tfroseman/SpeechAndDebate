@@ -5994,4 +5994,7 @@ button.close {
 .fullwidth {
   width: 100%; }
 
+.non_style_list {
+  list-style-type: none; }
+
 /*# sourceMappingURL=app.css.map */
