@@ -23,7 +23,7 @@
   {
    return [
        'name' => 'required',
-       'email' => 'required',
+       'email' => 'required|email',
        'accountPassword' => 'required',
        'accountPasswordAgain' => 'required',
        'school_id'=>'required'
