@@ -11,24 +11,34 @@
 |
 */
 
+
+/* Index */
 Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/logout', function () {
-    return view('pages.home');
-});
+/* Login Index GET & POST */
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
 
-Route::get('/login', function () {
-    return view('pages.home');
-});
+/* Logout */
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::Resource('account', 'AccountController');
+/* Register Index GET & POST */
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::Resource('account.school', 'AccountSchoolController');
 
-Route::Resource('account.students', 'AccountStudentsController');
+/* Account */
+Route::get('account', 'AccountController@index');
+Route::put('account', 'AccountController@update');
 
-Route::Resource('student', 'AccountStudentsController');
+/* */
+Route::Resource('school', 'AccountSchoolController');
+
+/**/
+Route::Resource('students', 'AccountStudentsController');
 
 Route::Resource('tournament', 'AccountTournamentController');
+
+
