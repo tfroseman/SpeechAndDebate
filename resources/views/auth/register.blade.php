@@ -12,8 +12,8 @@
 
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
-            <form method="POST" action="{{ url('account') }}">
-                {{ csrf_field() }}
+            <form method="POST" action="{!! url('auth/register') !!}">
+                {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="accountName">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="John Dow" value="{{ old('name') }}">
@@ -24,10 +24,10 @@
                 </div>
                 <div class="form-group">
                     <label for="accountPassword">Password</label>
-                    <input type="password" class="form-control" id="accountPassword" name="accountPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
 
                     <label for="accountPasswordAgain">Confirm Password</label>
-                    <input type="password" class="form-control" id="accountPasswordAgain" name="accountPasswordAgain" placeholder="Password">
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label for="school">School Request</label>
