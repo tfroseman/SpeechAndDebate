@@ -2,32 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\School;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\View;
 
-
-class AccountSchoolController extends Controller
+class AccountTournamentController extends Controller
 {
     /**
-     * Display a listing of the resource. - In this event is is pulling with a blank school id
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($accountID)
+    public function index()
     {
-        //
-        $schoolEmail = DB::table('schools')->select('email')->where('id', $accountID)->get();
 
-        $data = array(
-            'user' => User::findOrFail($accountID),
-            'emails' => $schoolEmail);
-        return view('account.school')->with($data);
-
+        return \Auth::User();
+        return '<p>Empty Index Return user to login</p>';
     }
 
     /**
@@ -37,13 +27,16 @@ class AccountSchoolController extends Controller
      */
     public function create()
     {
-        //
+        $data = array(
+            'school_id' => 1,
+        );
+        return view('tournament.new', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,25 +47,22 @@ class AccountSchoolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $accountID
-     * @param  int $schoolID
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($accountID, $schoolID)
+    public function show($id)
     {
-        $schoolEmail = DB::table('schools')->select('email')->where('id', $accountID)->get();
-
         $data = array(
-            'user' => User::findOrFail($accountID),
-            'emails' => $schoolEmail);
+            'school_id' => $id,
+        );
 
-        return view('account.school')->with($data);
+        return view('tournament.manage',$data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -83,8 +73,8 @@ class AccountSchoolController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -95,7 +85,7 @@ class AccountSchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
