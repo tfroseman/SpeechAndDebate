@@ -8,8 +8,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Student;
 
-class AccountStudentsController extends Controller
+class StudentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      * @param   $accountID

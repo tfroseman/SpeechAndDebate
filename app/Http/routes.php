@@ -34,11 +34,11 @@ Route::get('account', 'AccountController@index');
 Route::put('account', 'AccountController@update');
 
 /* */
-Route::Resource('school', 'AccountSchoolController');
+Route::Resource('school', 'SchoolController');
 
 /**/
-Route::Resource('students', 'AccountStudentsController');
+Route::Resource('students', 'StudentsController');
 
-Route::Resource('tournament', 'AccountTournamentController');
+Route::Resource('tournament', 'TournamentController');
 
 

@@ -11,25 +11,47 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 
-class AccountSchoolController extends Controller
+class SchoolController extends Controller
 {
+    private $admin = 0;
+    private $judge = 1;
+    private $coach = 2;
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource. - In this event is is pulling with a blank school id
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($accountID)
+    public function index()
     {
-        //
-        $schoolEmail = DB::table('schools')->select('email')->where('id', $accountID)->get();
+        $user = User::findOrFail(\Auth::User()->id);
+
+        $schoolEmail = DB::table('schools')
+            ->select('email')
+            ->where('id', User::findOrFail(\Auth::User()->id))
+            ->get();
+
+        $judges = DB::table('users')
+            ->select('name','edit_level')
+            ->where('edit_level', $this->judge)
+            ->get();
+
+        $coaches = DB::table('users')
+            ->select('name','edit_level')
+            ->where('edit_level', $this->coach)
+            ->get();
 
         $data = array(
-            'user' => User::findOrFail($accountID),
-            'emails' => $schoolEmail);
+            'user' => $user,
+            'emails' => $schoolEmail,
+            'judges' => $judges,
+            'coaches' => $coaches);
+
         return view('account.school')->with($data);
 
     }
