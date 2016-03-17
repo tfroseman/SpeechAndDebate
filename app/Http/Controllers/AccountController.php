@@ -32,9 +32,13 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->input('id');
+        $user = User::find($request->input('id'));
+        $user->edit_level = $request->input('edit_level');
+        $user->save();
+        return "true";
     }
 
     /**
@@ -45,6 +49,14 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->school_id = 1;
+        $user->save();
+
+        if(User::find($id)->school_id != 1){
+            return "Could not remove user. Please contact support";
+        }else{
+            return "true";
+        }
     }
 }
