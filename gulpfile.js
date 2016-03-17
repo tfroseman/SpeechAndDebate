@@ -11,20 +11,22 @@ var elixir = require('laravel-elixir');
  |
  */
 
-var handsontable = './resources/assets/bower/handsontable/dist/';
+var handsontable_route = './resources/assets/bower/handsontable/dist/';
+var schooljs = './resources/assets/js/school.js';
 
 elixir(function(mix) {
     mix.sass('app.scss');
 
     mix.styles([
-        handsontable + 'handsontable.full.css'
+        handsontable_route + 'handsontable.full.css'
     ]);
 
     mix.scripts([
-        handsontable + 'handsontable.full.js',
-        handsontable + 'zeroclipboard/ZeroClipboard.js',
-        handsontable + 'pikaday/pikaday.js',
-        handsontable + 'moment/moment.js'
+        handsontable_route + 'handsontable.full.js',
+        handsontable_route + 'zeroclipboard/ZeroClipboard.js',
+        handsontable_route + 'pikaday/pikaday.js',
+        handsontable_route + 'moment/moment.js',
+        schooljs
     ]);
 
 });
