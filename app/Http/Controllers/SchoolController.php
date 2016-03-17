@@ -37,16 +37,22 @@ class SchoolController extends Controller
             ->get();
 
         $judges = DB::table('users')
-            ->select('name','edit_level')
+            ->select('id','name','email','edit_level')
             ->where('edit_level', $this->judge)
             ->get();
 
         $coaches = DB::table('users')
-            ->select('name','edit_level')
+            ->select('id','name', 'email', 'edit_level')
             ->where('edit_level', $this->coach)
             ->get();
 
+        $school = DB::table('schools')
+            ->select('name')
+            ->where('id',$user->id)
+            ->first();
+
         $data = array(
+            'school' => $school,
             'user' => $user,
             'emails' => $schoolEmail,
             'judges' => $judges,
